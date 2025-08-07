@@ -611,4 +611,17 @@ client.on(Events.InteractionCreate, async interaction => {
   }
 });
 
+import express from 'express';
+
+const app = express();
+const PORT = process.env.PORT || 10000;
+
+app.get('/', (req, res) => {
+  res.send('🧟 The Soulkeeper is running...');
+});
+
+app.listen(PORT, () => {
+  console.log(`🌐 Uptime server running on port ${PORT}`);
+});
+
 client.login(process.env.YOUR_BOT_TOKEN);
