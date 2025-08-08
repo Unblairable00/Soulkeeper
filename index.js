@@ -29,7 +29,13 @@ const client = new Client({
 
 client.commands = new Collection();
 
-let db = JSON.parse(fs.readFileSync('./database.json', 'utf8'));
+let db = {};
+
+try {
+  db = JSON.parse(fs.readFileSync('./database.json', 'utf8'));
+} catch {
+  db = { itemShop: [], allItems: [], roleShop: [], users: {} };
+}
 if (!db.itemShop) db.itemShop = [];
 if (!db.allItems) db.allItems = [];
 if (!db.roleShop) db.roleShop = [];
